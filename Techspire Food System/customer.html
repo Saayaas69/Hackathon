@@ -62,6 +62,7 @@
           <textarea class="feedback-input" placeholder="Your comments..." rows="4" required></textarea>
           <button type="submit" class="btn btn-success">Submit Feedback</button>
         </form>
+        <button id="logout" class="logout">Logout</button>
       </div>
     </div>
 
@@ -231,6 +232,11 @@
 
       renderMenu();
       updateTransactionHistory();
+
+      document.getElementById("logout").addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = "landingpage.html";
+      });
     </script>
   </body>
 

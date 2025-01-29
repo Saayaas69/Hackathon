@@ -212,6 +212,18 @@ input[type="number"] {
   border-bottom: 1px solid #ddd;
 }
 
+.logout {
+  background-color: red;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  margin-left: 500px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .filter-buttons {

@@ -9,6 +9,16 @@ html, body {
   color: #333;
 }
 
+.logout {
+  background-color: #f9a826;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  margin-left: 1250px;
+  cursor: pointer;
+}
 
 header {
   background: #333;

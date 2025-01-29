@@ -136,7 +136,7 @@ displayUsers();
 
 document.getElementById("logout").addEventListener("click", function (event) {
   event.preventDefault();
-  window.location.href = "login.html";
+  window.location.href = "landingpage.html";
 });
 
 var ctx = document.getElementById("salesChart").getContext("2d");
