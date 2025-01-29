@@ -1,1 +1,458 @@
 <!-- // Customer dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Food Ordering System</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+
+      .balance-section {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .balance-display {
+        font-size: 24px;
+        color: #2196F3;
+        margin: 15px 0;
+        font-weight: bold;
+      }
+
+      .top-up-controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 15px 0;
+      }
+
+      input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 150px;
+      }
+
+
+      .btn {
+        padding: 8px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background: #2196F3;
+        color: white;
+      }
+
+      .btn-success {
+        background: #4CAF50;
+        color: white;
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .filter-btn {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn.all {
+        background: #2196F3;
+        color: white;
+      }
+
+      .filter-btn.top-rated {
+        background: #FFC107;
+        color: black;
+      }
+
+      .filter-btn.veg {
+        background: #4CAF50;
+        color: white;
+      }
+
+      .filter-btn.non-veg {
+        background: #f44336;
+        color: white;
+      }
+
+      .filter-btn.active {
+        transform: scale(1.05);
+      }
+
+
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .menu-item {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 15px;
+      }
+
+      .food-tag {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+      }
+
+      .veg {
+        background: #E8F5E9;
+        color: #4CAF50;
+      }
+
+      .non-veg {
+        background: #FFEBEE;
+        color: #f44336;
+      }
+
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .quantity-btn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        background: #f0f0f0;
+        cursor: pointer;
+      }
+
+
+      .feedback-section {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .feedback-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .feedback-input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+
+      .transaction-history {
+        margin-top: 15px;
+        max-height: 150px;
+        overflow-y: auto;
+        text-align: left;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .transaction {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .filter-buttons {
+          flex-direction: column;
+        }
+
+        .filter-btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body background="whitesmoke">
+    <div class="container">
+
+      <!-- Header ko lagi -->
+      <div class="header">
+        <div><img src="images/techspirelogo.jpg"></div>
+        <h1>College Food Ordering System</h1>
+        <p>Fresh, delicious meals delivered to you</p>
+      </div>
+
+      <!-- Balance ko lagi -->
+      <div class="balance-section">
+        <h2>Your Balance</h2>
+        <div class="balance-display" id="balance-amount">$50.00</div>
+        <div class="top-up-controls">
+          <input type="number" id="top-up-input" placeholder="Enter amount" min="1">
+          <button class="btn btn-primary" onclick="topUpBalance()">Top Up</button>
+        </div>
+        <div class="transaction-history" id="transactions">
+          <!-- Transactions will be displayed here -->
+        </div>
+      </div>
+
+      <!-- buttons haru-->
+      <div class="filter-buttons">
+        <button class="filter-btn all active" onclick="filterItems('all')">All Items</button>
+        <button class="filter-btn top-rated" onclick="filterItems('top-rated')">Top Rated</button>
+        <button class="filter-btn veg" onclick="filterItems('veg')">Vegetarian</button>
+        <button class="filter-btn non-veg" onclick="filterItems('non-veg')">Non-Vegetarian</button>
+      </div>
+
+      <!-- Menu-->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Menu items will be dynamically added here -->
+      </div>
+
+      <!-- Feedback Section ko lagi -->
+      <div class="feedback-section">
+        <h2 style="text-align: center; margin-bottom: 20px;">Share Your Feedback</h2>
+        <form class="feedback-form" onsubmit="submitFeedback(event)">
+          <input type="text" class="feedback-input" placeholder="Your Name" required>
+          <select class="feedback-input" required>
+            <option value="">Select Rating</option>
+            <option value="5">★★★★★ Excellent</option>
+            <option value="4">★★★★☆ Very Good</option>
+            <option value="3">★★★☆☆ Good</option>
+            <option value="2">★★☆☆☆ Fair</option>
+            <option value="1">★☆☆☆☆ Poor</option>
+          </select>
+          <textarea class="feedback-input" placeholder="Your comments..." rows="4" required></textarea>
+          <button type="submit" class="btn btn-success">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const menuItems = [
+        {
+          id: 1,
+          name: "Chicken MOMO",
+          type: "non-veg",
+          description: "Steamed dumplings filled with spiced chicken.",
+          price: 8.99,
+          rating: 4.5
+        },
+        {
+          id: 2,
+          name: "veg-Chowmein",
+          type: "veg",
+          description: "Stir-fried noodles with mixed vegetables",
+          price: 6.99,
+          rating: 4.8
+        },
+        {
+          id: 3,
+          name: "pasta",
+          type: "veg",
+          description: "Creamy pasta with veggies",
+          price: 10.99,
+          rating: 4.3
+        },
+        {
+          id: 4,
+          name: "Margherita Pizza",
+          type: "veg",
+          description: "Classic pizza with tomato sauce, mozzarella, and basil",
+          price: 12.99,
+          rating: 4.9
+        },
+        {
+          id: 5,
+          name: "Chicken Biryani",
+          type: "veg",
+          description: "Fragrant rice dish with spiced chicken.",
+          price: 9.99,
+          rating: 4.7
+        },
+        {
+          id: 6,
+          name: "Samosa",
+          type: "non-veg",
+          description: " Crispy pastry filled with spiced potatoes.",
+          price: 11.99,
+          rating: 4.6
+        }
+      ];
+
+
+      let balance = 50.00;
+      let quantities = {};
+      menuItems.forEach(item => quantities[item.id] = 0);
+      let transactions = ["Initial balance: Rs.50.00"];
+
+      // functions utility haru
+      function updateBalance(amount) {
+        balance = Math.round((balance + amount) * 100) / 100;
+        document.getElementById('balance-amount').textContent = `Rs${balance.toFixed(2)}`;
+      }
+
+      function addTransaction(text) {
+        const time = new Date().toLocaleTimeString();
+        transactions.unshift(`${time} - ${text}`);
+        updateTransactionHistory();
+      }
+
+      function updateTransactionHistory() {
+        document.getElementById('transactions').innerHTML =
+          transactions.map(t => `<div class="transaction">${t}</div>`).join('');
+      }
+
+
+      function topUpBalance() {
+        const amount = parseFloat(document.getElementById('top-up-input').value);
+        if (amount > 0) {
+          updateBalance(amount);
+          addTransaction(`Top up: +Rs${amount.toFixed(2)}`);
+          document.getElementById('top-up-input').value = '';
+          alert(`Successfully added Rs${amount.toFixed(2)} to your balance!`);
+        } else {
+          alert('Please enter a valid amount.');
+        }
+      }
+
+      function updateQuantity(itemId, change) {
+        quantities[itemId] = Math.max(0, quantities[itemId] + change);
+        renderMenu();
+      }
+
+      function placeOrder(itemId) {
+        const item = menuItems.find(i => i.id === itemId);
+        const quantity = quantities[itemId];
+        const total = item.price * quantity;
+
+        if (quantity > 0) {
+          if (balance >= total) {
+            updateBalance(-total);
+            addTransaction(`Ordered ${quantity}x ${item.name}: -Rs${total.toFixed(2)}`);
+            quantities[itemId] = 0;
+            renderMenu();
+            alert(`Order placed successfully! Remaining balance: Rs${balance.toFixed(2)}`);
+          } else {
+            alert('Insufficient balance! Please top up your account.');
+          }
+        }
+      }
+
+      function filterItems(filter) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.classList.contains(filter)) btn.classList.add('active');
+        });
+
+
+        let filtered = menuItems;
+        if (filter === 'top-rated') {
+          filtered = menuItems.filter(item => item.rating >= 4.5);
+        } else if (filter !== 'all') {
+          filtered = menuItems.filter(item => item.type === filter);
+        }
+        renderMenu(filtered);
+      }
+
+      function renderMenu(items = menuItems) {
+        const menuHtml = items.map(item => `
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h3>${item.name}</h3>
+                        <span class="food-tag ${item.type}">${item.type === 'veg' ? 'Veg' : 'Non-Veg'}</span>
+                    </div>
+                    <p>${item.description}</p>
+                    <div style="margin: 10px 0;">
+                        <strong>Price: Rs${item.price.toFixed(2)}</strong>
+                        <div>Rating: ${'★'.repeat(Math.floor(item.rating))}${'☆'.repeat(5 - Math.floor(item.rating))} ${item.rating}</div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                        <span>${quantities[item.id]}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    </div>
+                    <button class="btn btn-success" 
+                            onclick="placeOrder(${item.id})"
+                            ${quantities[item.id] === 0 ? 'disabled' : ''}>
+                        ${quantities[item.id] === 0 ? 'Add to Order' : `Order (${quantities[item.id]})`}
+                    </button>
+                </div>
+            `).join('');
+
+        document.getElementById('menu-grid').innerHTML = menuHtml;
+      }
+
+      function submitFeedback(event) {
+        event.preventDefault();
+        const form = event.target;
+        alert('Thank you for your feedback!');
+        form.reset();
+      }
+
+      // Initial render
+      renderMenu();
+      updateTransactionHistory();
+    </script>
+  </body>
+
+</html>

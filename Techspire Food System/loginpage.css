@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://source.unsplash.com/1920x1080/?nature,technology') center/cover no-repeat;
+  backdrop-filter: blur(10px);
+  color: #174915;
+}
+
+.login-container {
+  background-color: rgba(49, 102, 52, 0.8);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(50px);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #333;
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3E7B27;
+}
+
+.input-group {
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out;
+  background-color: #f4f4f4;
+}
+
+.input-group input:focus {
+  border-color: #3E7B27;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.toggle-password svg {
+  width: 22px;
+  height: 22px;
+  fill: #3E7B27;
+  transition: fill 0.3s ease;
+}
+
+.toggle-password:hover svg {
+  fill: #123524;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.1rem;
+  background-color: #3E7B27;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2E5C1B;
+}
+
+.submit-btn:focus {
+  outline: none;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forgot-password a {
+  color: #3E7B27;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin_dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="admin.js"></script>
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Admin Dashboard</h1>
+    </header>
+
+    <nav>
+      <a href="#food-menu">Manage Food Menu</a>
+      <a href="#user-management">User Management</a>
+      <a href="#monthly-report">Monthly Report</a>
+      <a href="#" id="logout">Logout</a>
+    </nav>
+
+    <div class="container">
+      <div id="food-menu" class="section">
+        <h2>Manage Food Menu</h2>
+        <button id="add-food-item" class="btn btn-add">Add New Item</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Food Item</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="food-menu-body">
+          </tbody>
+        </table>
+      </div>
+
+      <div id="user-management" class="section">
+        <h2>User Management</h2>
+        <button id="add-user" class="btn btn-add">Add New User</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Balance</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="user-body">
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>Monthly Sales Report</h2>
+        <canvas id="salesChart" width="400" height="200"></canvas>
+      </div>
+
+    </div>
+  </body>
+
+</html>
