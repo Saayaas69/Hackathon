@@ -17,7 +17,7 @@
       <div class="header">
         <div><img src="images/techspirelogo.jpg"></div>
         <h1>College Food Ordering System</h1>
-        <p>Fresh, delicious meals delivered to you</p>
+        <p class="fresh">Fresh, delicious meals delivered to you</p>
       </div>
 
       <!-- Balance ko lagi -->
@@ -77,7 +77,7 @@
         },
         {
           id: 2,
-          name: "veg-Chowmein",
+          name: "Veg-Chowmein",
           type: "veg",
           description: "Stir-fried noodles with mixed vegetables",
           price: 6.99,
@@ -85,7 +85,7 @@
         },
         {
           id: 3,
-          name: "pasta",
+          name: "Pasta",
           type: "veg",
           description: "Creamy pasta with veggies",
           price: 10.99,
@@ -121,12 +121,12 @@
       let balance = 50.00;
       let quantities = {};
       menuItems.forEach(item => quantities[item.id] = 0);
-      let transactions = ["Initial balance: Rs.50.00"];
+      let transactions = ["Initial balance: $50.00"];
 
-      // functions utility haru
+
       function updateBalance(amount) {
         balance = Math.round((balance + amount) * 100) / 100;
-        document.getElementById('balance-amount').textContent = `Rs${balance.toFixed(2)}`;
+        document.getElementById('balance-amount').textContent = `${balance.toFixed(2)}`;
       }
 
       function addTransaction(text) {
@@ -145,9 +145,9 @@
         const amount = parseFloat(document.getElementById('top-up-input').value);
         if (amount > 0) {
           updateBalance(amount);
-          addTransaction(`Top up: +Rs${amount.toFixed(2)}`);
+          addTransaction(`Top up: ${amount.toFixed(2)}`);
           document.getElementById('top-up-input').value = '';
-          alert(`Successfully added Rs${amount.toFixed(2)} to your balance!`);
+          alert(`Successfully added ${amount.toFixed(2)} to your balance!`);
         } else {
           alert('Please enter a valid amount.');
         }
@@ -166,10 +166,10 @@
         if (quantity > 0) {
           if (balance >= total) {
             updateBalance(-total);
-            addTransaction(`Ordered ${quantity}x ${item.name}: -Rs${total.toFixed(2)}`);
+            addTransaction(`Ordered ${quantity}x ${item.name}: ${total.toFixed(2)}`);
             quantities[itemId] = 0;
             renderMenu();
-            alert(`Order placed successfully! Remaining balance: Rs${balance.toFixed(2)}`);
+            alert(`Order placed successfully! Remaining balance: ${balance.toFixed(2)}`);
           } else {
             alert('Insufficient balance! Please top up your account.');
           }
@@ -177,7 +177,7 @@
       }
 
       function filterItems(filter) {
-        // Update active button
+
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.classList.remove('active');
           if (btn.classList.contains(filter)) btn.classList.add('active');
@@ -202,7 +202,7 @@
                     </div>
                     <p>${item.description}</p>
                     <div style="margin: 10px 0;">
-                        <strong>Price: Rs${item.price.toFixed(2)}</strong>
+                        <strong>Price: $${item.price.toFixed(2)}</strong>
                         <div>Rating: ${'★'.repeat(Math.floor(item.rating))}${'☆'.repeat(5 - Math.floor(item.rating))} ${item.rating}</div>
                     </div>
                     <div class="quantity-controls">
@@ -228,7 +228,7 @@
         form.reset();
       }
 
-      // Initial render
+
       renderMenu();
       updateTransactionHistory();
     </script>
