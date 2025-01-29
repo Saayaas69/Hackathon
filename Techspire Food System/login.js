@@ -10,8 +10,8 @@ document
     const password = document.getElementById("password").value;
 
     const users = {
-      raj: { password: "raj69", role: "admin_dashboard.html" },
-      bhimsen: { password: "bhimsen123", role: "manager.html" },
+      raj: { password: "admin123", role: "admin_dashboard.html" },
+      bhimsen: { password: "manager123", role: "manager.html" },
       shishir: { password: "customer123", role: "customer.html" },
       bibek: { password: "customer123", role: "customer.html" },
     };

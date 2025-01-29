@@ -65,8 +65,6 @@ function editFoodItem(index) {
 
   if (newName && !isNaN(newPrice) && !isNaN(newQuantity)) {
     foodMenu[index] = { name: newName, price: newPrice, quantity: newQuantity };
-
-    localStorage.setItem(foodMenu, JSON.stringify(foodMenu));
     displayFoodMenu();
   } else {
     alert("Invalid input! Please enter correct values.");
@@ -137,8 +135,8 @@ displayFoodMenu();
 displayUsers();
 
 document.getElementById("logout").addEventListener("click", function (event) {
-  event.preventDefault(); /
-  window.location.href = "login.html"; 
+  event.preventDefault();
+  window.location.href = "login.html";
 });
 
 var ctx = document.getElementById("salesChart").getContext("2d");

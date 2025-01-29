@@ -1,1 +1,48 @@
 <!-- Manager dashboard -->
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="manager.css">
+    <script defer src="manager.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>Manager Dashboard</h1>
+    </header>
+
+    <div class="container">
+      <div class="card" onclick="showAlert('Stock Level Overview')">
+        <h2>Dashboard Overview</h2>
+        <p>📊 Stock Level</p>
+        <p>🚮 Wastage</p>
+        <p>🔄 Change</p>
+      </div>
+
+      <div class="card" onclick="showAlert('Manage Food Stocks')">
+        <h2>Update Food Stocks</h2>
+        <p>➕ Add Food Stocks</p>
+        <p>➖ Remove Food Stocks</p>
+      </div>
+
+      <div class="card" onclick="showAlert('Staff Management')">
+        <h2>Manage Staff</h2>
+        <p>👨‍🍳 Assign Chefs</p>
+      </div>
+
+      <div class="card" onclick="showAlert('Customer Management')">
+        <h2>Manage Customers</h2>
+        <p>💼 Handle Customer Records</p>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Techspire Foods. All rights reserved.
+    </footer>
+  </body>
+
+</html>

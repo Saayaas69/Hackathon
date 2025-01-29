@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+header {
+  background: #333;
+  color: white;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #f9a826;
+}
+
+nav .btn {
+  background: #f9a826;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+nav .btn:hover {
+  background: #d88a1b;
+}
+
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 5%;
+  background: white;
+}
+
+.main-content {
+  max-width: 50%;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.main button {
+  background: #f9a826;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main button:hover {
+  background: #d88a1b;
+}
+
+.offer img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+
+.featured {
+  text-align: center;
+  padding: 50px 5%;
+}
+
+.featured h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.dish-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dish {
+  background: rgb(255, 255, 255);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.dish img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+
+.review {
+  text-align: center;
+  padding: 50px 5%;
+  background: white;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+}
+
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .dish-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
